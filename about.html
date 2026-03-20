@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About | Moksha Mary S</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; background: #0f0f0f; color: #f0f0f0; }
+    nav {
+      position: fixed; top: 0; width: 100%;
+      background: rgba(15,15,15,0.95);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 60px; border-bottom: 1px solid #222; z-index: 100;
+    }
+    nav .logo { font-size: 1.4rem; font-weight: 700; color: #a78bfa; }
+    nav ul { list-style: none; display: flex; gap: 30px; align-items: center; }
+    nav ul a { color: #ccc; text-decoration: none; font-size: 0.95rem; transition: color 0.3s; }
+    nav ul a:hover, nav ul a.active { color: #a78bfa; }
+    .logout-btn {
+      background: transparent; border: 1px solid #a78bfa;
+      color: #a78bfa; padding: 8px 18px; border-radius: 8px;
+      cursor: pointer; font-size: 0.85rem; transition: all 0.3s;
+    }
+    .logout-btn:hover { background: #a78bfa; color: #0f0f0f; }
+    .page { max-width: 800px; margin: 0 auto; padding: 120px 40px 80px; }
+    .page-header { margin-bottom: 50px; }
+    .page-header h1 { font-size: 2.5rem; font-weight: 800; }
+    .page-header h1 span { color: #a78bfa; }
+    .page-header p { color: #666; margin-top: 8px; }
+    .divider { width: 60px; height: 4px; background: #a78bfa; border-radius: 2px; margin: 16px 0; }
+    .about-card {
+      background: #1a1a2e; border: 1px solid #2d2d4e;
+      border-radius: 20px; padding: 40px; margin-bottom: 30px;
+    }
+    .about-card h2 { color: #a78bfa; margin-bottom: 16px; font-size: 1.2rem; }
+    .about-card p { color: #bbb; line-height: 1.9; font-size: 1rem; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 30px; }
+    .info-item { background: #0f0f0f; border-radius: 12px; padding: 16px 20px; }
+    .info-item label { color: #666; font-size: 0.8rem; display: block; margin-bottom: 4px; }
+    .info-item span { color: #a78bfa; font-weight: 600; }
+    footer { text-align: center; padding: 30px; color: #555; font-size: 0.85rem; border-top: 1px solid #1a1a1a; }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">Moksha.dev</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><button class="logout-btn" onclick="logout()">Logout</button></li>
+    </ul>
+  </nav>
+
+  <div class="page">
+    <div class="page-header">
+      <h1>About <span>Me</span></h1>
+      <div class="divider"></div>
+      <p>Get to know me a little better</p>
+    </div>
+
+    <div class="about-card">
+      <h2>👩‍💻 Who am I?</h2>
+      <p>Hello! I'm Moksha Mary S, a BCA student passionate about creating beautiful and functional websites. I'm currently learning HTML, CSS, JavaScript, Node.js, and databases as part of my course. I enjoy solving problems through code and love turning ideas into real, working projects. I'm always curious, always learning, and excited to grow as a developer!</p>
+    </div>
+
+    <div class="about-card">
+      <h2>🎯 My Goals</h2>
+      <p>My goal is to become a full-stack web developer. I want to build real-world applications that solve real problems. I'm passionate about learning new technologies and constantly improving my skills. I believe in writing clean, readable code and building projects that make a difference.</p>
+    </div>
+
+    <div class="about-card">
+      <h2>📋 Quick Info</h2>
+      <div class="info-grid">
+        <div class="info-item"><label>Name</label><span>Moksha Mary S</span></div>
+        <div class="info-item"><label>Degree</label><span>BCA</span></div>
+        <div class="info-item"><label>Location</label><span>Bengaluru, India</span></div>
+        <div class="info-item"><label>Status</label><span>Open to opportunities</span></div>
+      </div>
+    </div>
+  </div>
+
+  <footer><p>© 2026 Moksha Mary S — Built with 💜 using HTML, CSS, JS & Node.js</p></footer>
+
+  <script>
+    if (!sessionStorage.getItem('loggedIn')) window.location.href = 'login.html';
+    function logout() { sessionStorage.clear(); window.location.href = 'login.html'; }
+  </script>
+</body>
+</html>

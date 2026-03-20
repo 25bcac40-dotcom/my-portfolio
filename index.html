@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home | Moksha Mary S</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f0f0f;
+      color: #f0f0f0;
+    }
+    nav {
+      position: fixed; top: 0; width: 100%;
+      background: rgba(15,15,15,0.95);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 60px;
+      border-bottom: 1px solid #222;
+      z-index: 100;
+    }
+    nav .logo { font-size: 1.4rem; font-weight: 700; color: #a78bfa; }
+    nav ul { list-style: none; display: flex; gap: 30px; align-items: center; }
+    nav ul a {
+      color: #ccc; text-decoration: none;
+      font-size: 0.95rem; transition: color 0.3s;
+    }
+    nav ul a:hover { color: #a78bfa; }
+    .logout-btn {
+      background: transparent; border: 1px solid #a78bfa;
+      color: #a78bfa; padding: 8px 18px; border-radius: 8px;
+      cursor: pointer; font-size: 0.85rem; transition: all 0.3s;
+    }
+    .logout-btn:hover { background: #a78bfa; color: #0f0f0f; }
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      text-align: center;
+      padding: 100px 20px 60px;
+      background: radial-gradient(ellipse at top, #1e1040 0%, #0f0f0f 70%);
+    }
+    .welcome-badge {
+      background: #1a1a2e; border: 1px solid #2d2d4e;
+      padding: 8px 20px; border-radius: 50px;
+      font-size: 0.85rem; color: #a78bfa;
+      margin-bottom: 24px;
+    }
+    .hero h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 16px; }
+    .hero h1 span { color: #a78bfa; }
+    .hero p { font-size: 1.2rem; color: #aaa; max-width: 500px; margin-bottom: 36px; }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+    .btn {
+      padding: 14px 32px; border-radius: 8px;
+      font-size: 1rem; font-weight: 600; cursor: pointer;
+      text-decoration: none; transition: all 0.3s;
+    }
+    .btn-primary { background: #a78bfa; color: #0f0f0f; border: none; }
+    .btn-primary:hover { background: #8b5cf6; transform: translateY(-2px); }
+    .btn-outline { background: transparent; color: #a78bfa; border: 2px solid #a78bfa; }
+    .btn-outline:hover { background: #a78bfa; color: #0f0f0f; transform: translateY(-2px); }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      max-width: 900px;
+      margin: 60px auto 0;
+      padding: 0 20px;
+    }
+    .card {
+      background: #1a1a2e; border: 1px solid #2d2d4e;
+      border-radius: 16px; padding: 28px 24px;
+      text-align: center; text-decoration: none;
+      transition: all 0.3s; color: #f0f0f0;
+    }
+    .card:hover { transform: translateY(-6px); border-color: #a78bfa; }
+    .card span { font-size: 2.5rem; display: block; margin-bottom: 12px; }
+    .card h3 { font-size: 1rem; color: #a78bfa; margin-bottom: 6px; }
+    .card p { font-size: 0.8rem; color: #666; }
+    footer {
+      text-align: center; padding: 30px;
+      color: #555; font-size: 0.85rem;
+      border-top: 1px solid #1a1a1a;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Moksha.dev</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><button class="logout-btn" onclick="logout()">Logout</button></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <div class="welcome-badge">👋 Welcome back, <span id="user-email"></span></div>
+    <h1>Hi, I'm <span>Moksha Mary S</span></h1>
+    <p>A passionate BCA student building projects one line of code at a time.</p>
+    <div class="hero-btns">
+      <a href="projects.html" class="btn btn-primary">View My Work</a>
+      <a href="contact.html" class="btn btn-outline">Contact Me</a>
+    </div>
+
+    <div class="cards">
+      <a href="about.html" class="card">
+        <span>👩‍💻</span>
+        <h3>About Me</h3>
+        <p>My story & background</p>
+      </a>
+      <a href="skills.html" class="card">
+        <span>⚡</span>
+        <h3>Skills</h3>
+        <p>Technologies I know</p>
+      </a>
+      <a href="projects.html" class="card">
+        <span>📁</span>
+        <h3>Projects</h3>
+        <p>Things I've built</p>
+      </a>
+      <a href="contact.html" class="card">
+        <span>📬</span>
+        <h3>Contact</h3>
+        <p>Get in touch with me</p>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 Moksha Mary S — Built with 💜 using HTML, CSS, JS & Node.js</p>
+  </footer>
+
+  <script>
+    if (!sessionStorage.getItem('loggedIn')) {
+      window.location.href = 'login.html';
+    }
+    const email = sessionStorage.getItem('userEmail');
+    if (email) document.getElementById('user-email').textContent = email;
+    function logout() {
+      sessionStorage.clear();
+      window.location.href = 'login.html';
+    }
+  </script>
+</body>
+</html>

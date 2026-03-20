@@ -1,0 +1,237 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login | Moksha Mary S</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f0f0f;
+      color: #f0f0f0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(ellipse at top, #1e1040 0%, #0f0f0f 70%);
+    }
+    .container {
+      width: 100%;
+      max-width: 420px;
+      padding: 20px;
+    }
+    .logo {
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #a78bfa;
+      margin-bottom: 8px;
+    }
+    .tagline {
+      text-align: center;
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 36px;
+    }
+    .card {
+      background: #1a1a2e;
+      border: 1px solid #2d2d4e;
+      border-radius: 20px;
+      padding: 40px;
+    }
+    .tabs {
+      display: flex;
+      margin-bottom: 30px;
+      background: #0f0f0f;
+      border-radius: 10px;
+      padding: 4px;
+    }
+    .tab {
+      flex: 1;
+      padding: 10px;
+      text-align: center;
+      cursor: pointer;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #666;
+      transition: all 0.3s;
+      border: none;
+      background: transparent;
+    }
+    .tab.active {
+      background: #a78bfa;
+      color: #0f0f0f;
+    }
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #aaa;
+      font-size: 0.85rem;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 14px 16px;
+      background: #0f0f0f;
+      border: 1px solid #2d2d4e;
+      border-radius: 10px;
+      color: #f0f0f0;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .form-group input:focus { border-color: #a78bfa; }
+    .btn {
+      width: 100%;
+      padding: 14px;
+      background: #a78bfa;
+      color: #0f0f0f;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 6px;
+    }
+    .btn:hover { background: #8b5cf6; transform: translateY(-2px); }
+    .msg {
+      margin-top: 16px;
+      text-align: center;
+      font-size: 0.9rem;
+      display: none;
+      padding: 10px;
+      border-radius: 8px;
+    }
+    .msg.error { color: #f87171; background: #2d1a1a; display: block; }
+    .msg.success { color: #a78bfa; background: #1a1a2e; display: block; }
+    .form-panel { display: none; }
+    .form-panel.active { display: block; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">Moksha.dev</div>
+    <p class="tagline">Welcome! Please login to continue</p>
+    <div class="card">
+      <div class="tabs">
+        <button class="tab active" onclick="switchTab('login')">Login</button>
+        <button class="tab" onclick="switchTab('register')">Register</button>
+      </div>
+
+      <!-- LOGIN FORM -->
+      <div class="form-panel active" id="login-panel">
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="login-email" placeholder="you@example.com"/>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="login-pass" placeholder="Enter your password"/>
+        </div>
+        <button class="btn" onclick="login()">Login →</button>
+        <p class="msg" id="login-msg"></p>
+      </div>
+
+      <!-- REGISTER FORM -->
+      <div class="form-panel" id="register-panel">
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="reg-email" placeholder="you@example.com"/>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="reg-pass" placeholder="Create a password"/>
+        </div>
+        <div class="form-group">
+          <label>Confirm Password</label>
+          <input type="password" id="reg-pass2" placeholder="Repeat your password"/>
+        </div>
+        <button class="btn" onclick="register()">Create Account →</button>
+        <p class="msg" id="reg-msg"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function switchTab(tab) {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.form-panel').forEach(p => p.classList.remove('active'));
+      document.getElementById(tab + '-panel').classList.add('active');
+      event.target.classList.add('active');
+    }
+
+    async function login() {
+      const email = document.getElementById('login-email').value.trim();
+      const password = document.getElementById('login-pass').value.trim();
+      const msg = document.getElementById('login-msg');
+      msg.className = 'msg';
+
+      if (!email || !password) {
+        msg.textContent = '⚠️ Please fill in all fields.';
+        msg.className = 'msg error'; return;
+      }
+      try {
+        const res = await fetch('http://localhost:3000/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        });
+        const data = await res.json();
+        if (data.success) {
+          sessionStorage.setItem('loggedIn', 'true');
+          sessionStorage.setItem('userEmail', data.email);
+          msg.textContent = '✅ Login successful! Redirecting...';
+          msg.className = 'msg success';
+          setTimeout(() => window.location.href = 'index.html', 1000);
+        } else {
+          msg.textContent = '❌ ' + data.error;
+          msg.className = 'msg error';
+        }
+      } catch {
+        msg.textContent = '❌ Could not connect to server.';
+        msg.className = 'msg error';
+      }
+    }
+
+    async function register() {
+      const email = document.getElementById('reg-email').value.trim();
+      const password = document.getElementById('reg-pass').value.trim();
+      const password2 = document.getElementById('reg-pass2').value.trim();
+      const msg = document.getElementById('reg-msg');
+      msg.className = 'msg';
+
+      if (!email || !password || !password2) {
+        msg.textContent = '⚠️ Please fill in all fields.';
+        msg.className = 'msg error'; return;
+      }
+      if (password !== password2) {
+        msg.textContent = '⚠️ Passwords do not match.';
+        msg.className = 'msg error'; return;
+      }
+      try {
+        const res = await fetch('http://localhost:3000/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        });
+        const data = await res.json();
+        if (data.success) {
+          msg.textContent = '✅ Account created! You can now login.';
+          msg.className = 'msg success';
+          setTimeout(() => switchTab('login'), 1500);
+        } else {
+          msg.textContent = '❌ ' + data.error;
+          msg.className = 'msg error';
+        }
+      } catch {
+        msg.textContent = '❌ Could not connect to server.';
+        msg.className = 'msg error';
+      }
+    }
+  </script>
+</body>
+</html>
