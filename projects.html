@@ -1,59 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Projects | Moksha Mary S</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Segoe UI', sans-serif; background: #0f0f0f; color: #f0f0f0; }
-    nav {
-      position: fixed; top: 0; width: 100%;
-      background: rgba(15,15,15,0.95);
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 18px 60px; border-bottom: 1px solid #222; z-index: 100;
-    }
-    nav .logo { font-size: 1.4rem; font-weight: 700; color: #a78bfa; }
-    nav ul { list-style: none; display: flex; gap: 30px; align-items: center; }
-    nav ul a { color: #ccc; text-decoration: none; font-size: 0.95rem; transition: color 0.3s; }
-    nav ul a:hover, nav ul a.active { color: #a78bfa; }
-    .logout-btn {
-      background: transparent; border: 1px solid #a78bfa;
-      color: #a78bfa; padding: 8px 18px; border-radius: 8px;
-      cursor: pointer; font-size: 0.85rem; transition: all 0.3s;
-    }
-    .logout-btn:hover { background: #a78bfa; color: #0f0f0f; }
-    .page { max-width: 900px; margin: 0 auto; padding: 120px 40px 80px; }
-    .page-header { margin-bottom: 50px; }
-    .page-header h1 { font-size: 2.5rem; font-weight: 800; }
-    .page-header h1 span { color: #a78bfa; }
-    .page-header p { color: #666; margin-top: 8px; }
-    .divider { width: 60px; height: 4px; background: #a78bfa; border-radius: 2px; margin: 16px 0; }
-    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
-    .project-card {
-      background: #1a1a2e; border: 1px solid #2d2d4e;
-      border-radius: 20px; padding: 32px 28px;
-      transition: all 0.3s; display: flex; flex-direction: column; gap: 12px;
-    }
-    .project-card:hover { transform: translateY(-6px); border-color: #a78bfa; }
-    .project-icon { font-size: 2.5rem; }
-    .project-card h3 { color: #a78bfa; font-size: 1.1rem; }
-    .project-card p { color: #999; font-size: 0.9rem; line-height: 1.7; flex: 1; }
-    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
-    .tag {
-      background: #0f0f0f; border: 1px solid #2d2d4e;
-      padding: 4px 12px; border-radius: 50px;
-      font-size: 0.75rem; color: #a78bfa;
-    }
-    .status {
-      display: inline-block; padding: 4px 12px;
-      border-radius: 50px; font-size: 0.75rem; font-weight: 600;
-    }
-    .status.done { background: #1a2e1a; color: #4ade80; }
-    .status.wip { background: #2e2a1a; color: #fbbf24; }
-    footer { text-align: center; padding: 30px; color: #555; font-size: 0.85rem; border-top: 1px solid #1a1a1a; }
-  </style>
+  <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
   <nav>
@@ -67,66 +18,45 @@
       <li><button class="logout-btn" onclick="logout()">Logout</button></li>
     </ul>
   </nav>
-
   <div class="page">
     <div class="page-header">
       <h1>My <span>Projects</span></h1>
       <div class="divider"></div>
       <p>Things I've built and am working on</p>
     </div>
-
     <div class="projects-grid">
       <div class="project-card">
         <div class="project-icon">📁</div>
         <h3>Portfolio Website</h3>
         <p>A multi-page portfolio website with login, register, and contact form. Built with HTML, CSS, JavaScript frontend and Node.js + SQLite backend.</p>
-        <div class="tags">
-          <span class="tag">HTML</span><span class="tag">CSS</span>
-          <span class="tag">JavaScript</span><span class="tag">Node.js</span>
-          <span class="tag">SQLite</span>
-        </div>
+        <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Node.js</span><span class="tag">SQLite</span></div>
         <span class="status done">✅ Completed</span>
       </div>
-
       <div class="project-card">
         <div class="project-icon">📬</div>
         <h3>Contact Form App</h3>
         <p>A full-stack contact form that saves messages to a SQLite database using Express.js REST API. Supports validation and error handling.</p>
-        <div class="tags">
-          <span class="tag">Express.js</span><span class="tag">SQLite</span>
-          <span class="tag">REST API</span>
-        </div>
+        <div class="tags"><span class="tag">Express.js</span><span class="tag">SQLite</span><span class="tag">REST API</span></div>
         <span class="status done">✅ Completed</span>
       </div>
-
       <div class="project-card">
         <div class="project-icon">🔐</div>
         <h3>Auth System</h3>
         <p>A login and register system with password hashing using bcryptjs. Users are stored securely in a SQLite database.</p>
-        <div class="tags">
-          <span class="tag">bcryptjs</span><span class="tag">Node.js</span>
-          <span class="tag">SQLite</span>
-        </div>
+        <div class="tags"><span class="tag">bcryptjs</span><span class="tag">Node.js</span><span class="tag">SQLite</span></div>
         <span class="status done">✅ Completed</span>
       </div>
-
       <div class="project-card">
         <div class="project-icon">🚀</div>
         <h3>More Coming Soon</h3>
         <p>Currently learning and building more projects as part of my BCA course. Stay tuned for more exciting projects!</p>
-        <div class="tags">
-          <span class="tag">In progress</span>
-        </div>
+        <div class="tags"><span class="tag">In progress</span></div>
         <span class="status wip">🔨 In Progress</span>
       </div>
     </div>
   </div>
-
   <footer><p>© 2026 Moksha Mary S — Built with 💜 using HTML, CSS, JS & Node.js</p></footer>
-
-  <script>
-    if (!sessionStorage.getItem('loggedIn')) window.location.href = 'login.html';
-    function logout() { sessionStorage.clear(); window.location.href = 'login.html'; }
-  </script>
+  <script src="js/main.js"></script>
+  <script>checkAuth();</script>
 </body>
 </html>

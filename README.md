@@ -5,4 +5,4 @@ A full-stack portfolio website built with HTML, CSS, JavaScript, Node.js and SQL
 ## How to run locally
 1. npm install
 2. node server.js
-3. Open http://localhost:3000/login.html
+3. Open https://mokshamarys-space.onrender.com/login.html
