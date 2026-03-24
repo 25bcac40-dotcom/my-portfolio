@@ -3,9 +3,16 @@
 // ==================
 function checkAuth() {
   if (!sessionStorage.getItem('loggedIn')) {
-    window.location.href = '/login.html';
+    window.location.href = 'login.html';
   }
 }
+```
+
+Save it, then in Command Prompt:
+```
+git add .
+git commit -m "fix auth redirect"
+git push
 
 function logout() {
   sessionStorage.clear();
