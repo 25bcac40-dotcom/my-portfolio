@@ -1,18 +1,13 @@
 // ==================
 // AUTH CHECK
 // ==================
+
 function checkAuth() {
   if (!sessionStorage.getItem('loggedIn')) {
-    window.location.href = 'login.html';
+    window.location.href = '/login.html';
   }
 }
-```
 
-Save it, then in Command Prompt:
-```
-git add .
-git commit -m "fix auth redirect"
-git push
 
 function logout() {
   sessionStorage.clear();
@@ -22,11 +17,11 @@ function logout() {
 // ==================
 // LOGIN PAGE
 // ==================
-function switchTab(tab) {
+function switchTab(tab, el) {
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.form-panel').forEach(p => p.classList.remove('active'));
   document.getElementById(tab + '-panel').classList.add('active');
-  event.target.classList.add('active');
+  el.classList.add('active');
 }
 
 async function login() {

@@ -54,9 +54,8 @@
 
   <script src="js/main.js"></script>
   <script>
-    if (!sessionStorage.getItem('loggedIn')) {
-  window.location.href = 'login.html';
-}
+    checkAuth();
+
 
     async function loadMessages() {
       const container = document.getElementById('messages-container');
