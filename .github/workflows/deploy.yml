@@ -1,0 +1,45 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Check server file exists
+        run: |
+          if [ -f "server.js" ]; then
+            echo "✅ server.js found!"
+          else
+            echo "❌ server.js missing!"
+            exit 1
+          fi
+
+      - name: Check HTML files exist
+        run: |
+          for file in index.html login.html about.html skills.html projects.html contact.html; do
+            if [ -f "$file" ]; then
+              echo "✅ $file found!"
+            else
+              echo "❌ $file missing!"
+              exit 1
+            fi
+          done
+
+      - name: Pipeline complete
+        run: echo "🚀 CI/CD Pipeline passed! Ready to deploy."
